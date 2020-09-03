@@ -65,6 +65,8 @@ public class BinaryTree {
             if(current.right != null && current.left != null) {
                 int smallestValue = findSmallestValue(current.right);
                 current.value = smallestValue;
+                current.right = deleteRecursive(current.right, value);
+                return current;
             }
 
         if(value > current.value) {
@@ -75,6 +77,10 @@ public class BinaryTree {
         current.left = deleteRecursive(current.left, value);
         return current;
 
+    }
+
+    public void delete(int value) {
+        root = deleteRecursive(root, value);
     }
 
     public boolean containsNode(int value) {
